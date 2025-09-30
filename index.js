@@ -1,206 +1,218 @@
+// ===============================
+// Wait for DOM to be fully ready
+// ===============================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+    
+    // Initialize all functionality after DOM is ready
+    initNavigation();
+    initScrollEffects();
+    initSmoothScrolling();
+    initAnimations();
+    updateFooterYear();
+    
+    console.log("✅ AIP Conference 2026 CIT - Website Loaded Successfully!");
+});
+
+// ===============================
 // Mobile Navigation Toggle
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
+// ===============================
+function initNavigation() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+    console.log('Toggle element:', navToggle);
+    console.log('Menu element:', navMenu);
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            console.log('Toggle clicked!');
+            navToggle.classList.toggle('open');
+            navMenu.classList.toggle('open');
+            console.log('Toggle classes:', navToggle.classList);
+            console.log('Menu classes:', navMenu.classList);
+        });
 
-// Navbar scroll effect
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navMenu.classList.remove('open');
             });
-        }
-    });
-});
+        });
+    } else {
+        console.warn('Navigation elements not found - mobile menu disabled');
+    }
+}
 
-// Active navigation link on scroll
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-menu a');
+// ===============================
+// Navbar Scroll Effect + Active Links
+// ===============================
+function initScrollEffects() {
+    const navbar = document.querySelector(".navbar");
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+    const heroContent = document.querySelector(".hero-content");
 
-function updateActiveLink() {
-    const scrollPosition = window.scrollY + 100;
+    if (!navbar) {
+        console.warn('Navbar element not found');
+        return;
+    }
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
+    function handleScroll() {
+        const scrollY = window.scrollY;
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        // Navbar scrolled effect
+        navbar.classList.toggle("scrolled", scrollY > 50);
+
+        // Active link highlight
+        if (sections.length > 0 && navLinks.length > 0) {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = sectionId;
+                }
+            });
+
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
+                if (link.getAttribute('href') === `#${currentSection}`) {
                     link.classList.add('active');
                 }
             });
         }
-    });
-}
 
-window.addEventListener('scroll', updateActiveLink);
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+        // Parallax hero effect
+        if (heroContent && scrollY < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrollY * 0.5}px)`;
+            heroContent.style.opacity = Math.max(0.3, 1 - scrollY / 500);
         }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-const animateElements = document.querySelectorAll('.info-card, .track-card, .timeline-item, .event-card');
-animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
-// Countdown Timer (optional - for conference dates)
-function updateCountdown() {
-    const conferenceDate = new Date('2026-03-15T00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = conferenceDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // You can display this countdown somewhere on the page
-    // For example, in a dedicated countdown section
-    // console.log(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-
-    if (distance < 0) {
-        console.log('Conference has started!');
     }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initialize on load
 }
 
-// Update countdown every second (uncomment if you want to use it)
-// setInterval(updateCountdown, 1000);
-
-// Track card hover effect enhancement
-const trackCards = document.querySelectorAll('.track-card');
-trackCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
+// ===============================
+// Smooth Scrolling for Anchor Links
+// ===============================
+function initSmoothScrolling() {
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
     
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Info card counter animation
-function animateCounter(element, target, duration = 2000) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-        start += increment;
-        if (start >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(start);
-        }
-    }, 16);
-}
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroContent = document.querySelector('.hero-content');
-    
-    if (heroContent && scrolled < window.innerHeight) {
-        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
-        heroContent.style.opacity = 1 - (scrolled / 500);
+    if (anchorLinks.length === 0) {
+        console.warn('No anchor links found for smooth scrolling');
+        return;
     }
-});
 
-// Form validation (if you add forms later)
-function validateForm(formId) {
-    const form = document.getElementById(formId);
-    if (!form) return;
-    
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const inputs = form.querySelectorAll('input[required], textarea[required]');
-        let isValid = true;
-        
-        inputs.forEach(input => {
-            if (!input.value.trim()) {
-                isValid = false;
-                input.classList.add('error');
-            } else {
-                input.classList.remove('error');
+    anchorLinks.forEach(anchor => {
+        anchor.addEventListener("click", e => {
+            const href = anchor.getAttribute("href");
+            
+            // Skip if it's just "#"
+            if (href === "#" || href === "#!") {
+                e.preventDefault();
+                return;
+            }
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80;
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: "smooth"
+                });
             }
         });
-        
-        if (isValid) {
-            console.log('Form is valid');
-            // Submit form or show success message
-        } else {
-            console.log('Please fill all required fields');
-        }
     });
 }
 
-// Dynamic year update in footer
-const currentYear = new Date().getFullYear();
-const footerYear = document.querySelector('.footer-bottom p');
-if (footerYear) {
-    footerYear.innerHTML = `&copy; Copyright AIP Conference ${currentYear}. All Rights Reserved.`;
+// ===============================
+// Intersection Observer (Fade-in Animations)
+// ===============================
+function initAnimations() {
+    const animatedElements = document.querySelectorAll(".info-card, .track-card, .timeline-item");
+    
+    if (animatedElements.length === 0) {
+        console.warn('No elements found for animation');
+        return;
+    }
+
+    // Check if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) {
+        console.warn('IntersectionObserver not supported - showing all elements');
+        animatedElements.forEach(el => {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+        });
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                // Unobserve after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    });
+
+    animatedElements.forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(el);
+    });
+
+    // Track Card Hover Effect
+    const trackCards = document.querySelectorAll(".track-card");
+    trackCards.forEach(card => {
+        card.addEventListener("mouseenter", () => {
+            card.style.transform = "translateY(-10px) scale(1.02)";
+        });
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "translateY(0) scale(1)";
+        });
+    });
 }
 
-console.log('AIP Conference 2026 CIT - Website Loaded Successfully!');
+// ===============================
+// Dynamic Year in Footer
+// ===============================
+function updateFooterYear() {
+    const footerYear = document.querySelector(".footer-bottom p");
+    if (footerYear) {
+        const currentYear = new Date().getFullYear();
+        footerYear.innerHTML = `&copy; Copyright AIP Conference ${currentYear}. All Rights Reserved.`;
+    }
+}
+
+// ===============================
+// Error Handling
+// ===============================
+window.addEventListener('error', function(e) {
+    console.error('JavaScript Error:', e.error);
+});
+
+// ===============================
+// Page Load Animation
+// ===============================
+window.addEventListener("load", () => {
+    document.body.style.opacity = "0";
+    document.body.style.transition = "opacity 0.5s ease";
+    
+    setTimeout(() => {
+        document.body.style.opacity = "1";
+    }, 100);
+});

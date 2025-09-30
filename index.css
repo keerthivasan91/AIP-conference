@@ -29,80 +29,6 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
-.navbar {
-    background: var(--white);
-    box-shadow: var(--shadow);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.navbar.scrolled {
-    box-shadow: var(--shadow-lg);
-}
-
-.nav-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.logo h2 {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: var(--primary-color);
-}
-
-.btn-submit {
-    background: var(--accent-color);
-    color: var(--white) !important;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-}
-
-.hamburger span {
-    width: 25px;
-    height: 3px;
-    background: var(--text-dark);
-    transition: all 0.3s ease;
-}
-
 /* Hero Section */
 .hero {
     position: relative;
@@ -664,40 +590,242 @@ body {
     }
 }
 
-/* Responsive Design */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+::-moz-selection {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Navigation */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Nav Menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--primary-color);
+}
+
+/* Submit Button */
+.btn-submit {
+    background: var(--accent-color);
+    color: var(--white) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Nav Toggle (Hamburger Button) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    position: relative;
+}
+
+.nav-toggle span {
+    width: 100%;
+    height: 3px;
+    background: var(--text-dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+    display: block;
+    transform-origin: center;
+}
+
+/* Enhanced Hamburger Animation for Overlay */
+.nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: var(--primary-color);
+}
+
+.nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--primary-color);
+}
+
+/* Mobile Menu - Slide Overlay from Right with Blur Background */
 @media (max-width: 968px) {
     .nav-menu {
         position: fixed;
-        left: -100%;
-        top: 70px;
+        top: 0;
+        right: -100%;
         flex-direction: column;
-        background: var(--white);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
         width: 100%;
+        height: 100vh;
         text-align: center;
-        transition: 0.3s;
-        box-shadow: var(--shadow-lg);
-        padding: 2rem 0;
-        gap: 1rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: none;
+        padding: 80px 2rem 2rem;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        z-index: 999;
     }
 
-    .nav-menu.active {
+    .nav-menu.open {
+        right: 0;
+    }
+
+    .nav-menu::before {
+        content: '';
+        position: absolute;
+        top: 0;
         left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%);
+        z-index: -1;
     }
 
-    .hamburger {
-        display: flex;
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .hamburger.active span:nth-child(2) {
+    .nav-menu li {
+        width: 100%;
         opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.4s ease;
     }
 
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+    .nav-menu.open li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Staggered animation for menu items */
+    .nav-menu.open li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.open li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu.open li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu.open li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu.open li:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu.open li:nth-child(6) { transition-delay: 0.35s; }
+    .nav-menu.open li:nth-child(7) { transition-delay: 0.4s; }
+    .nav-menu.open li:nth-child(8) { transition-delay: 0.45s; }
+    .nav-menu.open li:nth-child(9) { transition-delay: 0.5s; }
+
+    .nav-menu a {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu a:hover {
+        color: var(--primary-color);
+        transform: translateX(10px);
+        border-bottom-color: var(--primary-color);
+    }
+
+    .nav-menu .btn-submit {
+        margin-top: 1rem;
+        border: 2px solid var(--accent-color);
+        border-radius: 25px;
+        padding: 0.75rem 1.5rem;
+        background: var(--accent-color);
+        color: var(--white) !important;
+        font-size: 1.1rem;
+        border-bottom: none;
+    }
+
+    .nav-menu .btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .nav-toggle {
+        display: flex;
+        z-index: 1000;
+    }
+
+    .nav-toggle.open {
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+
+    .nav-toggle.open span {
+        background: var(--primary-color);
     }
 
     .hero-title {
@@ -773,6 +901,16 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
+
+    /* Adjust mobile menu for smaller screens */
+    .nav-menu {
+        padding: 70px 1.5rem 2rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 0.875rem 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -806,20 +944,19 @@ body {
     .host-image img {
         height: 300px;
     }
-}
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
+    /* Further adjustments for very small screens */
+    .nav-menu {
+        padding: 60px 1rem 2rem;
+    }
 
-/* Selection Color */
-::selection {
-    background: var(--primary-color);
-    color: var(--white);
-}
+    .nav-menu a {
+        font-size: 1rem;
+        padding: 0.75rem 0;
+    }
 
-::-moz-selection {
-    background: var(--primary-color);
-    color: var(--white);
+    .nav-toggle {
+        width: 25px;
+        height: 20px;
+    }
 }
