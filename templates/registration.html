@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration | UTCA Conference 2026{% endblock %}
+
+{% block content %}
+<section class="registration-section">
+  <h2>Registration Fee Details</h2>
+  <p class="subtitle">Please refer to the fee structure below</p>
+
+  <div class="fee-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>National (INR)</th>
+          <th>International (USD)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fee in fees %}
+        <tr>
+          <td>{{ fee.category }}</td>
+          <td>{{ fee.national }}</td>
+          <td>{{ fee.international }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% endblock %}
