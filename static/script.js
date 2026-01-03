@@ -194,7 +194,6 @@ function updateFooterYear() {
     const footerYear = document.querySelector(".footer-bottom p");
     if (footerYear) {
         const currentYear = new Date().getFullYear();
-        footerYear.innerHTML = `&copy; Copyright AIP Conference ${currentYear}. All Rights Reserved.`;
     }
 }
 
