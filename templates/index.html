@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home | UTCA Conference 2026{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">UTCA Conference 2026</h1>
+            <p class="hero-subtitle">2nd International Conference on Ubiquitous Technology in Communication & Artificial Intelligence</p>
+
+            <div class="hero-details">
+                <div class="detail-item">
+                    <span class="icon">📅</span>
+                    <span>June 26-27, 2026</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">📍</span>
+                    <span>Cambridge Institute of Technology, Bangalore</span>
+                </div>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="{{ url_for('submitpaper') }}" class="btn btn-primary" aria-label="Submit Paper">Submit Paper</a>
+                <a href="{{ url_for('registration') }}" class="btn btn-secondary" aria-label="Registration"> Registration</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conference Overview -->
+<section class="conference-info">
+    <div class="container">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">📄</div>
+                <h3>Full Paper Requirement</h3>
+                <p>Submit original papers, minimum of 6 pages, not published elsewhere.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">🎓</div>
+                <h3>Student Paper Eligibility</h3>
+                <p>Papers with a student as first author can compete for student paper awards.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">📚</div>
+                <h3>IEEE Xplore Submission</h3>
+                <p>All accepted papers will be submitted to IEEE for quality review.</p>
+            </div>
+
+            <div class="info-card">
+                <div class="info-icon">✅</div>
+                <h3>Review Process</h3>
+                <p>All submissions undergo single-blind review for quality and rigor.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
