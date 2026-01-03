@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %} Venue | UTCA Conference 2026 {% endblock %}
+
+{% block content %}
+<section class="venue-section">
+
+    <h2 class="page-title">Venue</h2>
+
+    <!-- Venue Details -->
+    <div class="venue-card">
+        <h3>Cambridge Institute of Technology Bangalore </h3>
+        <p>Cambridge Institute of Technology (CIT), Bengaluru, established in 2007 by the Umesh Education Trust, is an autonomous institution affiliated with Visvesvaraya Technological University, Belagavi. Located at K.R. Puram, the institute offers a wide range of undergraduate, postgraduate, and doctoral programs across engineering, management, and research disciplines. CIT is accredited with NAAC A+, holds NBA accreditation for several programs, and is recognized as a SIRO by the Government of India. Ranked in the 101–150 band of the NIRF Innovation Ranking 2023, the institute is known for its strong industry collaborations, modern infrastructure, experienced faculty, and robust placement ecosystem, making it a hub for academic excellence, innovation, and industry readiness.
+        </p>
+    </div>
+
+    <!-- Getting There -->
+    <h2 class="page-title mt-40">Getting There</h2>
+
+    <div class="travel-grid">
+
+        <div class="travel-card">
+            <h4>By Air</h4>
+            <p>
+                Kempegowda International Airport (BLR) is about
+                35 km from the campus.
+            </p>
+        </div>
+
+        <div class="travel-card">
+            <h4>By Train</h4>
+            <p>
+                Krishnarajapuram (KR Puram) Railway Station is the
+                nearest station, located around 5 km from the institute. |
+                KSR Bangalore City Junction Railway Station is about 18 km away.
+            </p>
+        </div>
+
+        <div class="travel-card">
+            <h4>By Road</h4>
+            <p>
+                The campus is well connected with NH 75 and is easily
+                accessible by bus, taxi, or auto-rickshaw from various parts of Bangalore.
+            </p>
+        </div>
+    </div>
+    <!-- Map -->
+     <br>
+     <br>
+    <div class="contact-map">
+        <iframe
+            src="https://www.google.com/maps?q=Cambridge%20Institute%20of%20Technology%20K%20R%20Puram%20Bangalore&output=embed"
+            width="100%" height="320" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+
+</section>
+{% endblock %}
