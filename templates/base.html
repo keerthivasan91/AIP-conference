@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}UTCA'2026{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/citlogo.png') }}" sizes="32x32" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta name="description"
+    content="UTCA-2026, International Conference on ”Ubiquitous Technology in Communication & Artificial Intelligence”- 2026 " />
+  <meta name="keywords"
+    content="UTCA, International Conference, Ubiquitous Technology, Communication, Artificial Intelligence" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="logo">
+          <h2>UTCA 2026</h2>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
+          <li><a href="{{ url_for('about') }}" class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
+          <li><a href="{{ url_for('callforpapers') }}"
+              class="{% if active_page == 'callforpapers' %}active{% endif %}">Call for Papers</a></li>
+          <li><a href="{{ url_for('UTCA2023') }}" class="{% if active_page == 'UTCA2023' %}active{% endif %}">UTCA
+              2023</a></li>
+          <li><a href="{{ url_for('committee') }}"
+              class="{% if active_page == 'committee' %}active{% endif %}">Committee</a></li>
+          <li><a href="{{ url_for('registration') }}"
+              class="{% if active_page == 'registration' %}active{% endif %}">Registration</a></li>
+          <li><a href="{{ url_for('venue') }}" class="{% if active_page == 'venue' %}active{% endif %}">Venue</a></li>
+          <li><a href="{{ url_for('contact') }}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
+          </li>
+          <li><a href="{{ url_for('submitpaper') }}" class="btn-submit" aria-label="Submit Paper">Submit Paper</a></li>
+        </ul>
+        <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>UTCA Conference 2026</h3>
+          <p>International Conference on Ubiquitous Technology in Communication & Artificial Intelligence</p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('callforpapers') }}">Call for Papers</a></li>
+            <li><a href="{{ url_for('registration') }}">Registration</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <p><a href="mailto:utcaconference@cambridge.edu.in">utcaconference@cambridge.edu.in</a></p>
+          <p><a href="tel:+919971181579">+91-9971181579</a></p>
+          <p>Cambridge Institute of Technology Bangalore, Karnataka, India</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; {{ year | default(2026) }} UTCA 2026. All rights reserved.
+          Organized by Cambridge Institute of Technology Bangalore.
+          <br>
+          Designed &amp; Developed by
+          <a href="https://www.linkedin.com/in/keerthi-vasan05" target="_blank" rel="noopener">
+            Keerthi Vasan P
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>
