@@ -13,6 +13,7 @@
   <meta name="keywords"
     content="UTCA, International Conference, Ubiquitous Technology, Communication, Artificial Intelligence" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -29,11 +30,14 @@
           <li><a href="{{ url_for('about') }}" class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
           <li><a href="{{ url_for('committee') }}"
               class="{% if active_page == 'committee' %}active{% endif %}">Committee</a></li>
-          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Call For<br>Reviewer</a></li>
+          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Call
+              For<br>Reviewer</a></li>
           <li class="dropdown">
-            <a href="#" class="{% if active_page in ['conference-track', 'submission-guidelines'] %}active{% endif %}">
+            <a href="#"
+              class="dropdown-toggle {% if active_page in ['conference-track', 'submission-guidelines'] %}active{% endif %}">
               Call For<br> Papers
             </a>
+
             <ul class="dropdown-menu">
               <li>
                 <a href="{{ url_for('conference_track') }}"
@@ -51,8 +55,8 @@
             </ul>
           </li>
 
-
-          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Previous <br> Proceedings<br>(2024)</a></li>
+          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Previous <br>
+              Proceedings<br>(2024)</a></li>
           <li><a href="{{ url_for('registration') }}"
               class="{% if active_page == 'registration' %}active{% endif %}">Registration</a></li>
           <li><a href="{{ url_for('venue') }}" class="{% if active_page == 'venue' %}active{% endif %}">Venue</a></li>
@@ -86,16 +90,34 @@
           <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('registration') }}">Registration</a></li>
+            <li><a href="{{ url_for('venue') }}">Venue</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
           </ul>
         </div>
 
         <div class="footer-section">
           <h4>Contact Info</h4>
-          <p><a href="mailto:utcaconference@cambridge.edu.in">utcaconference@cambridge.edu.in</a></p>
-          <p><a href="tel:+919971181579">+91-9971181579</a></p>
-          <p>Cambridge Institute of Technology Bangalore, Karnataka, India</p>
+
+          <p class="footer-contact">
+            <i data-lucide="mail"></i>
+            <a href="mailto:utcaconference@cambridge.edu.in">
+              utcaconference@cambridge.edu.in
+            </a>
+          </p>
+
+          <p class="footer-contact">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919971181579">
+              +91 99711 81579
+            </a>
+          </p>
+
+          <p class="footer-contact">
+            <i data-lucide="map-pin"></i>
+            Cambridge Institute of Technology, Bengaluru, Karnataka, India
+          </p>
         </div>
+
       </div>
 
       <div class="footer-bottom">
