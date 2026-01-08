@@ -1,7 +1,6 @@
 /* ========================================
    Modern Conference Website Styles
    ======================================== */
-
 /* Reset & Base */
 *,
 *::before,
@@ -275,13 +274,27 @@ img {
 
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: grid;
     place-items: center;
     padding-block: calc(80px + var(--space-2xl)) var(--space-2xl);
     overflow: hidden;
+    transform: translateY(-100px);
+    /* 🔑 Background image + gradient */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(102, 126, 234, 0.65) 0%,
+            rgba(118, 75, 162, 0.65) 100%
+        ),
+        url("/static/Images/DJI_0594.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 
 .hero::before {
     content: '';
@@ -321,7 +334,7 @@ img {
 
 .hero-title {
     font-size: clamp(2rem, 6vw, 3.5rem);
-    font-weight: 700;
+    font-weight: 1000;
     margin-bottom: var(--space-sm);
     text-shadow: 2px 2px 4px rgb(0 0 0 / 0.3);
     letter-spacing: -0.02em;
@@ -330,7 +343,8 @@ img {
 .hero-subtitle {
     font-size: clamp(1.1rem, 3vw, 1.5rem);
     margin-bottom: var(--space-lg);
-    font-weight: 300;
+    font-weight: 500;
+    color: #E5E7EB;
 }
 
 .hero-details {
@@ -339,6 +353,7 @@ img {
     gap: var(--space-lg);
     margin-bottom: var(--space-lg);
     flex-wrap: wrap;
+    color:#F1F5F9;
 }
 
 .detail-item {
@@ -349,6 +364,13 @@ img {
     backdrop-filter: blur(10px);
     padding: 0.75rem var(--space-md);
     border-radius: var(--radius-full);
+
+}
+
+.detail-item svg {
+    width: 18px;
+    height: 18px;
+    color: #FBBF24; /* warm gold */
 }
 
 .icon {
@@ -417,6 +439,159 @@ img {
 .hero-wave path {
     fill: var(--white);
 }
+
+
+/* ========================================
+   Explore Section (Tourist Attractions)
+======================================== */
+
+.explore-section {
+    padding-block: var(--space-2xl);
+    background: linear-gradient(
+        180deg,
+        rgb(37 99 235 / 0.04),
+        rgb(245 158 11 / 0.06)
+    );
+    text-align: center;
+}
+
+.explore-badge {
+    display: inline-block;
+    background: rgb(37 99 235 / 0.12);
+    color: var(--primary-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--space-md);
+}
+
+.explore-title {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+    color: var(--text-dark);
+}
+
+.explore-title span {
+    background: linear-gradient(
+        90deg,
+        var(--accent-color),
+        var(--primary-color)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.explore-subtitle {
+    max-width: 700px;
+    margin: 0 auto var(--space-xl);
+    font-size: 1.05rem;
+    color: var(--text-light);
+}
+
+/* Grid */
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+    gap: var(--space-xl);
+    justify-content: center;
+}
+
+/* Card */
+.explore-card {
+    text-align: center;
+    transition: transform var(--transition-base);
+}
+
+.explore-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Circular image */
+.explore-img {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto var(--space-sm);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgb(245 158 11 / 0.7);
+    box-shadow: var(--shadow-lg);
+}
+
+.explore-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Learn More */
+.learn-more {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+
+    background: rgb(31 41 55 / 0.75);
+    color: var(--white);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    text-decoration: none;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-base);
+}
+
+.explore-img:hover .learn-more {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.learn-more:hover {
+    background: rgb(31 41 55 / 0.9);
+}
+
+
+/* ========================================
+   Place Details Section
+======================================== */
+
+.place-section {
+    padding-block: var(--space-2xl);
+    background: var(--bg-light);
+}
+
+.place-about {
+    max-width: 900px;
+    margin: var(--space-lg) auto var(--space-xl);
+    text-align: center;
+}
+
+.place-about p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* Google Map */
+.place-map {
+    display: flex;
+    justify-content: center;
+}
+
+.place-map iframe {
+    width: 100%;
+    max-width: 900px;
+    height: 420px;
+    border: none;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+}
+
 
 /* ========================================
    Common Section Styles
@@ -687,6 +862,77 @@ img {
 }
 
 /* ========================================
+   Tracks Section
+   ======================================== */
+
+.tracks-section {
+    padding-block: var(--space-2xl);
+}
+
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--space-md);
+}
+
+.track-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: var(--space-lg);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.track-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgb(37 99 235 / 0.3);
+}
+
+.track-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-sm);
+}
+
+.track-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.track-block {
+    background: var(--bg-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--primary-color);
+    transition: all var(--transition-base);
+}
+
+.track-block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.track-block h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--space-sm);
+    font-size: 1.25rem;
+}
+
+.track-block ul {
+    padding-left: var(--space-md);
+}
+
+.track-block ul li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+
+/* ========================================
    Important Dates Section
    ======================================== */
 
@@ -734,6 +980,13 @@ img {
     box-shadow: 0 0 0 10px var(--white), 0 0 0 12px var(--primary-color);
     color: var(--white);
 }
+
+.timeline-icon svg {
+    width: 26px;
+    height: 26px;
+    stroke: #fff;
+}
+
 
 .timeline-content {
     width: 45%;
@@ -1205,6 +1458,36 @@ tbody tr:hover {
     text-decoration: underline;
 }
 
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+    color: #d1d5db;
+    font-size: 0.95rem;
+}
+
+/* Lucide icons in footer */
+.footer-contact svg {
+    width: 18px;
+    height: 18px;
+    stroke: #FBBF24;     /* warm gold */
+    stroke-width: 2.2;
+    flex-shrink: 0;
+}
+
+/* Footer links */
+.footer-contact a {
+    color: #d1d5db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #FBBF24;
+}
+
+
 /* ========================================
    Animations
    ======================================== */
@@ -1383,6 +1666,17 @@ tbody tr:hover {
 
     .travel-card {
         padding: var(--space-md);
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: static;
+        box-shadow: none;
+        padding-left: 1rem;
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
     }
 }
 
