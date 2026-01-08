@@ -43,9 +43,19 @@ def venue():
 def submitpaper():
     return render_template('submitpaper.html',active_page='submitpaper')
 
-@app.route('/callforpapers')
-def callforpapers():
-    return render_template('callforpapers.html',active_page='callforpapers')
+@app.route('/callforpapers/submission-guidelines')
+def submission_guidelines():
+    return render_template(
+        'submission-guidelines.html',
+        active_page='submission-guidelines'
+    )
+
+@app.route('/callforpapers/conference-track')
+def conference_track():
+    return render_template(
+        'conference-track.html',
+        active_page='conference-track'
+    )
 
 @app.route('/UTCA2023')
 def UTCA2023():
