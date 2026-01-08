@@ -92,5 +92,27 @@ def committee():
     return render_template("committee.html", active_page="committee")
 
 
+@app.route("/iskcon-bangalore")
+def iskcon_bangalore():
+    return render_template("iskcon-bangalore.html", active_page="iskcon-bangalore")
+
+@app.route("/nandi-hills")
+def nandi_hills():
+    return render_template("nandi-hills.html", active_page="nandi-hills")
+
+
+@app.route("/vidhana-soudha")
+def vidhana_soudha():   
+    return render_template("vidhana-soudha.html", active_page="vidhana-soudha") 
+
+
+@app.route("/bangalore-palace")
+def bangalore_palace():   
+    return render_template("bangalore-palace.html", active_page="bangalore-palace")
+
+@app.route("/lalbagh")
+def lalbagh():   
+    return render_template("lalbagh.html", active_page="lalbagh")   
+
 if __name__ == "__main__":
     app.run(debug=True)
