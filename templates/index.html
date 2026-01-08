@@ -1,63 +1,187 @@
-{% extends "base.html" %}
-
-{% block title %}Home | UTCA Conference 2026{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Home | UTCA Conference 2026{%
+endblock %} {% block content %}
 <!-- Hero Section -->
 <section class="hero" id="home">
-    <div class="hero-overlay"></div>
-    <div class="container">
-        <div class="hero-content">
-            <h1 class="hero-title">UTCA Conference 2026</h1>
-            <p class="hero-subtitle">2nd International Conference on Ubiquitous Technology in Communication & Artificial Intelligence</p>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">UTCA Conference 2026</h1>
+      <p class="hero-subtitle">
+        2nd International Conference on Ubiquitous Technology in Communication &
+        Artificial Intelligence
+      </p>
 
-            <div class="hero-details">
-                <div class="detail-item">
-                    <span class="icon">📅</span>
-                    <span>June 26-27, 2026</span>
-                </div>
-                <div class="detail-item">
-                    <span class="icon">📍</span>
-                    <span>Cambridge Institute of Technology, Bangalore</span>
-                </div>
-            </div>
-
-            <div class="hero-buttons">
-                <a href="{{ url_for('submitpaper') }}" class="btn btn-primary" aria-label="Submit Paper">Submit Paper</a>
-                <a href="{{ url_for('registration') }}" class="btn btn-secondary" aria-label="Registration"> Registration</a>
-            </div>
+      <div class="hero-details">
+        <div class="detail-item">
+          <i data-lucide="calendar-days"></i>
+          <span>June 26-27, 2026</span>
         </div>
+        <div class="detail-item">
+          <i data-lucide="map-pin"></i>
+          <span>Cambridge Institute of Technology, Bangalore</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <a
+          href="{{ url_for('submitpaper') }}"
+          class="btn btn-primary"
+          aria-label="Submit Paper"
+          >Submit Paper</a
+        >
+        <a
+          href="{{ url_for('registration') }}"
+          class="btn btn-secondary"
+          aria-label="Registration"
+        >
+          Registration</a
+        >
+      </div>
     </div>
+  </div>
+</section>
+<section class="explore-section">
+  <div class="container">
+    <span class="explore-badge">Tourist Attractions</span>
+
+    <h2 class="explore-title">Explore <span>Bangalore</span></h2>
+
+    <p class="explore-subtitle">
+      Experience the blend of technology, heritage, greenery, and culture while
+      attending the conference
+    </p>
+
+    <div class="explore-grid">
+      <div class="explore-card">
+        <div class="explore-img">
+          <img
+            src="/static/Images/lalbagh.jpg"
+            alt="Lalbagh Botanical Garden"
+          />
+          <a href="{{ url_for('lalbagh') }}" class="learn-more">
+            Learn More →
+          </a>
+        </div>
+        <h4>Lalbagh</h4>
+      </div>
+
+      <div class="explore-card">
+        <div class="explore-img">
+          <img
+            src="/static/Images/bangalore-palace.jpg"
+            alt="Bangalore Palace"
+          />
+          <a href="{{ url_for('bangalore_palace') }}" class="learn-more">
+            Learn More →
+          </a>
+        </div>
+        <h4>Bangalore Palace</h4>
+      </div>
+
+      <div class="explore-card">
+        <div class="explore-img">
+          <img src="/static/Images/vidhana-soudha.jpg" alt="Vidhana Soudha" />
+          <a href="{{ url_for('vidhana_soudha') }}" class="learn-more">
+            Learn More →
+          </a>
+        </div>
+        <h4>Vidhana Soudha</h4>
+      </div>
+
+      <div class="explore-card active">
+        <div class="explore-img">
+          <img src="/static/Images/nandi-hills.jpg" alt="Nandi Hills" />
+          <a href="{{ url_for('nandi_hills') }}" class="learn-more">
+            Learn More →
+          </a>
+        </div>
+        <h4>Nandi Hills</h4>
+      </div>
+
+      <div class="explore-card">
+        <div class="explore-img">
+          <img
+            src="/static/Images/iskcon-bangalor.jpg"
+            alt="ISKCON Bangalore"
+          />
+          <a href="{{ url_for('iskcon_bangalore') }}" class="learn-more">
+            Learn More →
+          </a>
+        </div>
+        <h4>ISKCON Bangalore</h4>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Conference Overview -->
-<section class="conference-info">
-    <div class="container">
-        <div class="info-grid">
-            <div class="info-card">
-                <div class="info-icon">📄</div>
-                <h3>Full Paper Requirement</h3>
-                <p>Submit original papers, minimum of 6 pages, not published elsewhere.</p>
-            </div>
+<section class="dates-section">
+  <div class="container">
+    <h2 class="page-title">Important Dates</h2>
+    <div class="header-line"></div>
 
-            <div class="info-card">
-                <div class="info-icon">🎓</div>
-                <h3>Student Paper Eligibility</h3>
-                <p>Papers with a student as first author can compete for student paper awards.</p>
-            </div>
-
-            <!--<div class="info-card">
-                <div class="info-icon">📚</div>
-                <h3>IEEE Xplore Submission</h3>
-                <p>All accepted papers will be submitted to IEEE for quality review.</p>
-            </div>-->
-
-            <div class="info-card">
-                <div class="info-icon">✅</div>
-                <h3>Review Process</h3>
-                <p>All submissions undergo single-blind review for quality and rigor.</p>
-            </div>
+    <div class="timeline">
+      <!-- Paper Submission Deadline -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="file-text"></i>
         </div>
+
+        <div class="timeline-content">
+          <h3>Paper Submission Deadline</h3>
+          <div class="date">15 March 2026</div>
+          <div class="status extended">Extended</div>
+        </div>
+      </div>
+
+      <!-- Acceptance Notification -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="megaphone"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Notification of Acceptance</h3>
+          <div class="date">10 April 2026</div>
+          <div class="status">On Time</div>
+        </div>
+      </div>
+
+      <!-- Camera Ready Submission -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="edit-3"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Camera-Ready Paper Submission</h3>
+          <div class="date">30 April 2026</div>
+          <div class="status">Final</div>
+        </div>
+      </div>
+
+      <!-- Registration Deadline -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="credit-card"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Author Registration Deadline</h3>
+          <div class="date">10 May 2026</div>
+          <div class="status">Mandatory</div>
+        </div>
+      </div>
+
+      <!-- Conference Dates -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Conference Dates</h3>
+          <div class="date">26–27 June 2026</div>
+          <div class="status">Main Event</div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
+
 {% endblock %}
