@@ -24,16 +24,35 @@
         <div class="logo">
           <h2>UTCA 2026</h2>
         </div>
-
         <ul class="nav-menu" id="navMenu">
           <li><a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
           <li><a href="{{ url_for('about') }}" class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
-          <li><a href="{{ url_for('callforpapers') }}"
-              class="{% if active_page == 'callforpapers' %}active{% endif %}">Call for Papers</a></li>
-          <li><a href="{{ url_for('UTCA2023') }}" class="{% if active_page == 'UTCA2023' %}active{% endif %}">UTCA
-              2023</a></li>
           <li><a href="{{ url_for('committee') }}"
               class="{% if active_page == 'committee' %}active{% endif %}">Committee</a></li>
+          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Call For<br>Reviewer</a></li>
+          <li class="dropdown">
+            <a href="#" class="{% if active_page in ['conference-track', 'submission-guidelines'] %}active{% endif %}">
+              Call For<br> Papers
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ url_for('conference_track') }}"
+                  class="{% if active_page == 'conference-track' %}active{% endif %}">
+                  Conference Track
+                </a>
+              </li>
+
+              <li>
+                <a href="{{ url_for('submission_guidelines') }}"
+                  class="{% if active_page == 'submission-guidelines' %}active{% endif %}">
+                  Submission Guidelines
+                </a>
+              </li>
+            </ul>
+          </li>
+
+
+          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Previous <br> Proceedings<br>(2024)</a></li>
           <li><a href="{{ url_for('registration') }}"
               class="{% if active_page == 'registration' %}active{% endif %}">Registration</a></li>
           <li><a href="{{ url_for('venue') }}" class="{% if active_page == 'venue' %}active{% endif %}">Venue</a></li>
@@ -66,7 +85,6 @@
           <h4>Quick Links</h4>
           <ul>
             <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('callforpapers') }}">Call for Papers</a></li>
             <li><a href="{{ url_for('registration') }}">Registration</a></li>
             <li><a href="{{ url_for('contact') }}">Contact</a></li>
           </ul>
