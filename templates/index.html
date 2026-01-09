@@ -40,6 +40,110 @@ endblock %} {% block content %}
     </div>
   </div>
 </section>
+
+<section class="about-section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>About <br>Cambridge Institute of Technology, Bangalore, Karnataka, India </h2>
+            <div class="header-line"></div>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-content">
+                Founded in 2007 by the Umesh Education Trust, the Cambridge Institute of Technology (CIT), Bengaluru, is an autonomous institution affiliated with VTU, distinguished by its NAAC A+ and NBA accreditations. Located on a 10-acre campus in K.R. Puram, the institute offers a comprehensive academic portfolio including eight B.E. programs, M.B.A., M.C.A., and various M.Tech and Ph.D. tracks supported by eight research centers.
+
+CIT is recognized as a Scientific and Industrial Research Organization (SIRO) and earned a spot in the 101–150 band of the 2023 NIRF Innovation Rankings. Its infrastructure is notably advanced, featuring industry-sponsored laboratories and a specialized metallic 3D printing facility. The academic environment is driven by a faculty body composed of experts from IITs, NITs, and prestigious international universities. This expertise, combined with a robust placement ecosystem involving over 200 companies like TCS, Rakuten, and HSBC, ensures high industry readiness for its students. Beyond academics, CIT fosters entrepreneurship through its MSME incubation center and a dedicated Section 8 company for research and innovation, maintaining a global legacy through its 10,000+ successful alumni.    
+            </div>
+
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='Images/mainbuilding.jpg') }}"
+                     alt="UTCA Conference"
+                     loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="dates-section">
+  <div class="container">
+    <h2 class="page-title">Important Dates</h2>
+    <div class="header-line"></div>
+    <br>
+    <div class="timeline">
+      <!-- Paper Submission Deadline -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="file-text"></i>
+        </div>
+
+        <div class="timeline-content">
+          <h3>Paper Submission Starts</h3>
+          <div class="date">25th February 2026</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="file-text"></i>
+        </div>
+
+        <div class="timeline-content">
+          <h3>Paper Submission Deadline</h3>
+          <div class="date">20th April 2026</div>
+        </div>
+      </div>
+
+      <!-- Acceptance Notification -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="megaphone"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Acceptance Notification</h3>
+          <div class="date">15th May 2026</div>
+          <!--<div class="status">On Time</div>-->
+        </div>
+      </div>
+
+      <!-- Camera Ready Submission -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="edit-3"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Registration start date</h3>
+          <div class="date">22nd May 2026</div>
+          <!--<div class="status">Final</div>-->
+        </div>
+      </div>
+
+      <!-- Registration Deadline -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="credit-card"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Registration Deadline </h3>
+          <div class="date">5th June 2026</div>
+          <!--<div class="status">Mandatory</div>-->
+        </div>
+      </div>
+
+      <!-- Conference Dates -->
+      <div class="timeline-item">
+        <div class="timeline-icon">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <div class="timeline-content">
+          <h3>Conference Dates</h3>
+          <div class="date">26–27 June 2026</div>
+          <div class="status">Main Event</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="explore-section">
   <div class="container">
     <span class="explore-badge">Tourist Attractions</span>
@@ -109,76 +213,6 @@ endblock %} {% block content %}
           </a>
         </div>
         <h4>ISKCON Bangalore</h4>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="dates-section">
-  <div class="container">
-    <h2 class="page-title">Important Dates</h2>
-    <div class="header-line"></div>
-
-    <div class="timeline">
-      <!-- Paper Submission Deadline -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i data-lucide="file-text"></i>
-        </div>
-
-        <div class="timeline-content">
-          <h3>Paper Submission Deadline</h3>
-          <div class="date">15 March 2026</div>
-          <div class="status extended">Extended</div>
-        </div>
-      </div>
-
-      <!-- Acceptance Notification -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i data-lucide="megaphone"></i>
-        </div>
-        <div class="timeline-content">
-          <h3>Notification of Acceptance</h3>
-          <div class="date">10 April 2026</div>
-          <div class="status">On Time</div>
-        </div>
-      </div>
-
-      <!-- Camera Ready Submission -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i data-lucide="edit-3"></i>
-        </div>
-        <div class="timeline-content">
-          <h3>Camera-Ready Paper Submission</h3>
-          <div class="date">30 April 2026</div>
-          <div class="status">Final</div>
-        </div>
-      </div>
-
-      <!-- Registration Deadline -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i data-lucide="credit-card"></i>
-        </div>
-        <div class="timeline-content">
-          <h3>Author Registration Deadline</h3>
-          <div class="date">10 May 2026</div>
-          <div class="status">Mandatory</div>
-        </div>
-      </div>
-
-      <!-- Conference Dates -->
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <i data-lucide="graduation-cap"></i>
-        </div>
-        <div class="timeline-content">
-          <h3>Conference Dates</h3>
-          <div class="date">26–27 June 2026</div>
-          <div class="status">Main Event</div>
-        </div>
       </div>
     </div>
   </div>
