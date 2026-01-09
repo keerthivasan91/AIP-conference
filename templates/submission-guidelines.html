@@ -5,50 +5,36 @@ Coming Soon | Conference
 {% endblock %}
 
 {% block content %}
-<!--<section class="coming-soon-section">
-  <div class="coming-container">
-
-    <h1>Page Coming Soon</h1>
-
-    <p>
-      This section of the conference website is currently under preparation.
-      Updates will be published shortly. Please check back later.
-    </p>
-
-    <p class="note">
-      Thank you for your interest in the conference.
-    </p>
-
-  </div>
-</section> -->
-<!-- Conference Overview -->
 <section class="conference-info">
-    <div class="container">
-        <div class="info-grid">
-            <div class="info-card">
-                <div class="info-icon">📄</div>
-                <h3>Full Paper Requirement</h3>
-                <p>Submit original papers, minimum of 6 pages, not published elsewhere.</p>
-            </div>
+  <div class="container">
+    <div class="info-grid">
 
-            <div class="info-card">
-                <div class="info-icon">🎓</div>
-                <h3>Student Paper Eligibility</h3>
-                <p>Papers with a student as first author can compete for student paper awards.</p>
-            </div>
-
-            <!--<div class="info-card">
-                <div class="info-icon">📚</div>
-                <h3>IEEE Xplore Submission</h3>
-                <p>All accepted papers will be submitted to IEEE for quality review.</p>
-            </div>-->
-
-            <div class="info-card">
-                <div class="info-icon">✅</div>
-                <h3>Review Process</h3>
-                <p>All submissions undergo single-blind review for quality and rigor.</p>
-            </div>
+      <a href="{{ url_for('submission_details') }}" class="info-card">
+        <div class="info-icon">
+          <i data-lucide="file-text"></i>
         </div>
+        <h3>SUBMISSION DETAILS</h3>
+        <span>Learn more ➡️</span>
+      </a>
+
+      <a href="{{ url_for('author_guidelines') }}" class="info-card">
+        <div class="info-icon">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <h3>AUTHOR GUIDELINES</h3>
+        <span>Learn more ➡️</span>
+      </a>
+
+      <a href="{{ url_for('review_process') }}" class="info-card">
+        <div class="info-icon">
+          <i data-lucide="check-circle"></i>
+        </div>
+        <h3>Conference Review Process</h3>
+        <span>Learn more ➡️</span>
+      </a>
+
     </div>
+  </div>
 </section>
+
 {% endblock %}
