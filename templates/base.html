@@ -23,7 +23,7 @@
     <div class="container">
       <div class="nav-wrapper">
         <div class="logo">
-          <h2>UTCA 2026</h2>
+          <a href="{{url_for('home')}}" style="text-decoration: none;"><h2>UTCA 2026</h2></a>
         </div>
         <ul class="nav-menu" id="navMenu">
           <li><a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
