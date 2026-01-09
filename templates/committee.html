@@ -1,201 +1,32 @@
-{% extends "base.html" %} {% block title %} Coming Soon | Conference {% endblock
-%} {% block content %}
+{% extends "base.html" %}
+{% block title %}Organizing Committee | Conference{% endblock %}
+
+{% block content %}
 <section class="committee-section">
   <div class="container">
+
     <h2 class="page-title">Organizing Committee</h2>
     <div class="header-line"></div>
 
-    <!-- ===== Patron ===== -->
-    <h3 class="committee-title">Chief Patron</h3>
-    <div class="committee-grid single">
-      <div class="committee-card">
-        <img src="/static/img/patron.jpg" alt="Patron" />
-        <h4>Shri. D. K. Mohan</h4>
-        <p>Chairman, Cambridge Group of Institutions, Bengaluru, India</p>
-      </div>
-    </div>
+    {% for committee in committees %}
+      <h3 class="committee-title">{{ committee.title }}</h3>
 
-    <h3 class="committee-title">Patrons</h3>
-    <div class="committee-grid single">
-      <div class="committee-card">
-        <img src="/static/img/patron.jpg" alt="Patron" />
-        <h4>Mr. Nithin Mohan</h4>
-        <p>CEO, Cambridge Group of Institutions, Bengaluru, India</p>
-      </div>
-    </div>
+      <div class="committee-grid {% if committee.single %}single{% endif %}">
+        {% for member in committee.members %}
+          <div class="committee-card {% if not member.image %}text-only{% endif %}">
 
-    <h3 class="committee-title">General Chair</h3>
-    <div class="committee-grid single">
-      <div class="committee-card">
-        <img src="/static/img/patron.jpg" alt="Patron" />
-        <h4>Dr. B V Ravishankar</h4>
-        <p>
-          Director / Principal, Cambridge Institute of Technology, CIT,
-          Bangalore , India
-        </p>
-      </div>
-    </div>
+            {% if member.image %}
+              <img src="{{ member.image }}" alt="{{ member.name }}">
+            {% endif %}
 
-    <h3 class="committee-title">Conference Chair</h3>
-    <div class="committee-grid single">
-      <div class="committee-card">
-        <img src="/static/img/patron.jpg" alt="Patron" />
-        <h4>Dr. Nagesh K.N</h4>
-        <p>HoD (ECE), Vice Principal CIT, Bengaluru, India</p>
-      </div>
-    </div>
+            <h4>{{ member.name }}</h4>
+            <p>{{ member.designation }}</p>
 
-    <h3 class="committee-title">Organizing Chair and Co-ordinator</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Ajay Kumar Dwivedi</h4>
-        <p>Department R&D Head , Associate Professor</p>
-        <p>Electronics and Communication Engineering, CIT,Bengaluru, India</p>
+          </div>
+        {% endfor %}
       </div>
-      <div class="committee-card text-only">
-        <h4>Dr. Vivek Singh</h4>
-        <p>Associate Professor ,Electronics and Communication Engineering</p>
-        <p>Electronics and Communication Engineering, CIT,Bengaluru, India</p>
-      </div>
-    </div>
+    {% endfor %}
 
-    <h3 class="committee-title">Department Coordinator</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Priya Singh</h4>
-        <p>Assistant Professor,Electronics and Communication Engineering</p>
-        <p>Electronics and Communication Engineering, CIT,Bengaluru, India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr. Indu K</h4>
-        <p>Assistant Professor,Electronics and Communication Engineering</p>
-        <p>Electronics and Communication Engineering, CIT,Bengaluru, India</p>
-      </div>
-    </div>
-
-    <h3 class="committee-title">Keynote Speaker</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Debabrata Das</h4>
-        <p>Chief Guest & Speaker</p>
-        <p>Director, IIIT Bangalore</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr. Nasimuddin</h4>
-        <p>Speaker</p>
-        <p>Scientist, A*STAR I2R Singapore</p>
-      </div>
-    </div>
-
-    <h3 class="committee-title">Industry Advisory Committee</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Hema Singh</h4>
-        <p>
-          Chief Scientist & Head, Centre for Electromagnetics (CEM), CSIR-NAL,
-          Bangalore, India
-        </p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr. V S Gangwar</h4>
-        <p>Senior Scientist (Scientist 'F'), LRDE, Bangalore, India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Ms. Vineetha Joy</h4>
-        <p>Senior Scientist, CSIR-NAL, Bangalore, India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr. Puneet Kumar Mishra</h4>
-        <p>Scientist, URSC, Bangalore, India</p>
-      </div>
-    </div>
-
-    <h3 class="committee-title">Publicity Chair</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Chrispin Jiji</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr. Lakshmi C R</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Hariprasad T. L.</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mrs. Chaithra S.</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Jayaprakash S</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Athul Ghosh P</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Praveen Kumar K C</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-    </div>
-    <h3 class="committee-title">Local Organizing Committee</h3>
-    <div class="committee-grid">
-      <div class="committee-card text-only">
-        <h4>Dr. Kavitha M V</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Dr.Ravi Kumar M.</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mrs. Shakila D.</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr.Veerappa S. C.</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. A. M. Lokesh</h4>
-        <p>Associate Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mrs.Roopa M.</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Shyam Sundar V.</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mrs. Nandini Kumar B</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-      <div class="committee-card text-only">
-        <h4>Mr. Malikarjun Hampali</h4>
-        <p>Assistant Professor</p>
-        <p>Electronics and Communication Engineering , CIT , Bengaluru , India</p>
-      </div>
-    </div>
   </div>
 </section>
-{% endblock %} .
+{% endblock %}
