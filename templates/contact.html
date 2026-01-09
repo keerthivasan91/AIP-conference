@@ -1,99 +1,134 @@
-{% extends "base.html" %}
-
-{% block title %}Contact | UTCA Conference 2026{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Contact | UTCA Conference 2026{%
+endblock %} {% block content %}
 <section class="contact-section" id="contact">
-    <div class="container">
-        <div class="section-header">
-            <h2>Contact Us</h2>
-            <div class="header-line"></div>
-        </div>
-
-        <!-- Common Contact -->
-        <div class="general-contact">
-            <p>
-                 Email:
-                <a href="mailto:utcaconference@cambridge.edu.in">
-                    utcaconference@cambridge.edu.in
-                </a>
-            </p>
-        </div>
-
-        <!-- Coordinators -->
-        <h3 class="sub-heading">Conference Co-Ordinators</h3>
-        <div class="contact-cards">
-
-            <div class="contact-card">
-                <h4>Dr. Ajay Kumar Dwivedi</h4>
-                <p>Co-Ordinator – UTCA 2026</p>
-                <p>Department of ECE</p>
-                <p>Cambridge Institute of Technology</p>
-                <p>K R Puram, Bengaluru – 560036</p>
-            </div>
-
-            <div class="contact-card">
-                <h4>Dr. Vivek Singh</h4>
-                <p>Co-Ordinator – UTCA 2026</p>
-                <p>Department of ECE</p>
-                <p>Cambridge Institute of Technology</p>
-                <p>K R Puram, Bengaluru – 560036</p>
-            </div>
-
-        </div>
-
-        <!-- Department Coordinators -->
-        <h3 class="sub-heading">Department Conference Co-Ordinators</h3>
-        <div class="contact-cards">
-
-            <div class="contact-card">
-                <h4>Dr. Priya Singh</h4>
-                <p>Assistant Professor</p>
-                <p>Department of ECE</p>
-                <p>Cambridge Institute of Technology</p>
-                <p>
-                    Email:
-                    <a href="mailto:priya.ece@cambridge.edu.in">
-                        priya.ece@cambridge.edu.in
-                    </a>
-                </p>
-                <p>
-                    Phone:
-                    <a href="tel:+919971181579">+91-9971181579</a>
-                </p>
-            </div>
-
-            <div class="contact-card">
-                <h4>Dr. Indu K</h4>
-                <p>Assistant Professor</p>
-                <p>Department of ECE</p>
-                <p>Cambridge Institute of Technology</p>
-                <p>
-                    Email:
-                    <a href="mailto:indu.ece@cambridge.edu.in">
-                        indu.ece@cambridge.edu.in
-                    </a>
-                </p>
-                <p>
-                    Phone:
-                    <a href="tel:+919483629962">+91-9483629962</a>
-                </p>
-            </div>
-
-        </div>
-
-        <!-- Map -->
-        <div class="contact-map">
-            <iframe
-                src="https://www.google.com/maps?q=Cambridge%20Institute%20of%20Technology%20K%20R%20Puram%20Bangalore&output=embed"
-                width="100%"
-                height="320"
-                style="border:0;"
-                allowfullscreen
-                loading="lazy">
-            </iframe>
-        </div>
-
+  <div class="container">
+    <div class="section-header">
+      <h2>Contact Us</h2>
+      <div class="header-line"></div>
     </div>
+
+    <!-- Common Contact -->
+    <div class="general-contact">
+      <p>
+        Email:
+        <a href="mailto:utcaconference@cambridge.edu.in">
+          utcaconference@cambridge.edu.in
+        </a>
+      </p>
+    </div>
+
+    <h3 class="sub-heading">Conference Co-Ordinators</h3>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <img
+          src="/static/Images/ajay-dwivedi.jpeg"
+          alt="Dr. Ajay Kumar Dwivedi"
+          class="contact-photo"
+        />
+        <div class="contact-info">
+          <h4>Dr. Ajay Kumar Dwivedi</h4>
+          <p>Co-Ordinator – UTCA 2026</p>
+          <p>Department of ECE</p>
+          <p>Cambridge Institute of Technology</p>
+          <p>K R Puram, Bengaluru – 560036</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img
+          src="/static/Images/vivek-singh.jpeg"
+          alt="Dr. Vivek Singh"
+          class="contact-photo"
+        />
+        <div class="contact-info">
+          <h4>Dr. Vivek Singh</h4>
+          <p>Co-Ordinator – UTCA 2026</p>
+          <p>Department of ECE</p>
+          <p>Cambridge Institute of Technology</p>
+          <p>K R Puram, Bengaluru – 560036</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-heading">Department Conference Co-Ordinators</h3>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <img
+          src="/static/Images/priya-singh.jpg"
+          alt="Dr. Priya Singh"
+          class="contact-photo"
+        />
+
+        <div class="contact-info">
+          <h4>Dr. Priya Singh</h4>
+          <p>Assistant Professor</p>
+          <p>Department of ECE</p>
+          <p>Cambridge Institute of Technology</p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:priya.ece@cambridge.edu.in"
+              >priya.ece@cambridge.edu.in</a
+            >
+          </p>
+          <p><strong>Phone:</strong> <a href="tel:+919971181579">+91-9971181579</a></p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img
+          src="/static/Images/indu-k.jpg"
+          alt="Dr. Indu K"
+          class="contact-photo"
+        />
+
+        <div class="contact-info">
+          <h4>Dr. Indu K</h4>
+          <p>Assistant Professor</p>
+          <p>Department of ECE</p>
+          <p>Cambridge Institute of Technology</p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:indu.ece@cambridge.edu.in"
+              >indu.ece@cambridge.edu.in</a
+            >
+          </p>
+          <p><strong>Phone:</strong> <a href="tel:+919483629962">+91-9483629962</a></p>
+        </div>
+      </div>
+    </div>
+    <section class="developer-section">
+    <div class="container">
+        <h3 class="sub-heading">Website Developed By</h3>
+        
+        <div class="developer-card">
+            <img src="/static/Images/keerthi.jpg" alt="Keerthi Vasan P" class="contact-photo">
+            
+            <div class="contact-info">
+                <h4>Keerthi Vasan P</h4>
+                <p>Full Stack Developer | CSE-IOT Student</p>
+                <p>Cambridge Institute of Technology</p>
+                
+                <div class="dev-socials">
+                    <a href="https://www.linkedin.com/in/keerthi-vasan05/" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/keerthivasan91" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Map -->
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps?q=Cambridge%20Institute%20of%20Technology%20K%20R%20Puram%20Bangalore&output=embed"
+        width="100%"
+        height="320"
+        style="border: 0"
+        allowfullscreen
+        loading="lazy"
+      >
+      </iframe>
+    </div>
+  </div>
 </section>
 {% endblock %}
