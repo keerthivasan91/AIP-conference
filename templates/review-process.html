@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}
+Coming Soon | Conference
+{% endblock %}
+
+{% block content %}
+<section class="dates-section">
+  <div class="container">
+
+    <h2 class="page-title">Conference Review Process</h2>
+    <div class="header-line"></div><br>
+
+    <div class="timeline">
+
+      <!-- Step 1 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">📨</div>
+        <div class="timeline-content">
+          <h3>Step 1: Acknowledgement</h3>
+          <p class="date">Submission Stage</p>
+          <p class="status">
+            Acknowledgement will be sent to the author after submission of
+            Abstract / Full Paper through the conference website
+            (via EasyChair). A unique Manuscript ID will be assigned.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">🔍</div>
+        <div class="timeline-content">
+          <h3>Step 2: Plagiarism & Scope Check</h3>
+          <p class="date">Initial Screening</p>
+          <p class="status">
+            The manuscript will be checked for plagiarism using Turnitin
+            software and evaluated for novelty and relevance to the
+            conference theme. Manuscripts with plagiarism less than
+            <strong>20%</strong> will be considered for further review.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">⚠️</div>
+        <div class="timeline-content">
+          <h3>Step 3: Preliminary Decision</h3>
+          <p class="date">Editorial Review</p>
+          <p class="status">
+            Manuscripts not meeting the required criteria will be notified
+            as <strong>“Revise and Resubmit”</strong> or <strong>“Rejected”</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">👥</div>
+        <div class="timeline-content">
+          <h3>Step 4: Double-Blind Review</h3>
+          <p class="date">Peer Review</p>
+          <p class="status">
+            Each consolidated manuscript will be assigned to at least
+            <strong>two independent reviewers</strong> and will undergo
+            a double-blind review process.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">📢</div>
+        <div class="timeline-content">
+          <h3>Step 5: Final Decision</h3>
+          <p class="date">Decision Notification</p>
+          <p class="status">
+            Based on reviewers’ comments, authors will receive one of the
+            following decisions:
+            <br>
+            <strong>Accept</strong> /
+            <strong>Accept with Revision</strong> /
+            <strong>Reject</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="timeline-item">
+        <div class="timeline-icon">📝</div>
+        <div class="timeline-content">
+          <h3>Step 6: Camera-Ready & Registration</h3>
+          <p class="date">Final Submission</p>
+          <p class="status">
+            Accepted and revised papers must be submitted along with
+            registration details, camera-ready copy, and a signed
+            copyright transfer form.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
