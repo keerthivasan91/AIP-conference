@@ -413,6 +413,13 @@ img {
 
 }
 
+.detail-item a {
+    text-decoration: none; color: inherit;
+}
+.detail-item a:hover{
+    text-decoration:underline; color:var(--accent-color);
+}
+
 .detail-item svg {
     width: 18px;
     height: 18px;
