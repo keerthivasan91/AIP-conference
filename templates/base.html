@@ -1,144 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}UTCA'2026{% endblock %}</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='Images/citlogo.png') }}"
+      sizes="32x32"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta
+      name="description"
+      content="UTCA-2026, International Conference on ”Ubiquitous Technology in Communication & Artificial Intelligence”- 2026 "
+    />
+    <meta
+      name="keywords"
+      content="UTCA, International Conference, Ubiquitous Technology, Communication, Artificial Intelligence"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}UTCA'2026{% endblock %}</title>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='Images/citlogo.png') }}" sizes="32x32" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <meta name="description"
-    content="UTCA-2026, International Conference on ”Ubiquitous Technology in Communication & Artificial Intelligence”- 2026 " />
-  <meta name="keywords"
-    content="UTCA, International Conference, Ubiquitous Technology, Communication, Artificial Intelligence" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="logo">
-          <a href="{{url_for('home')}}" style="text-decoration: none;"><h2>UTCA 2026</h2></a>
-        </div>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a></li>
-          <li><a href="{{ url_for('about') }}" class="{% if active_page == 'about' %}active{% endif %}">About</a></li>
-          <li><a href="{{ url_for('committee') }}"
-              class="{% if active_page == 'committee' %}active{% endif %}">Committee</a></li>
-          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7t9lVq2T22zmH0TKNBJDwd1UjguhJ7xE-JI6OKnadmh9xw/viewform?usp=sharing&ouid=108850276283933379059" target="_blank" rel="noopener">Call
-              For<br>Reviewer</a></li>
-          <li class="dropdown">
-            <a href="#"
-              class="dropdown-toggle {% if active_page in ['conference-track', 'submission-guidelines'] %}active{% endif %}">
-              Call For<br> Papers
-            </a>
-
-            <ul class="dropdown-menu">
-              <li>
-                <a href="{{ url_for('conference_track') }}"
-                  class="{% if active_page == 'conference-track' %}active{% endif %}">
-                  Conference Track
-                </a>
-              </li>
-
-              <li>
-                <a href="{{ url_for('submission_guidelines') }}"
-                  class="{% if active_page == 'submission-guidelines' %}active{% endif %}">
-                  Submission Guidelines
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <li><a href="https://pubs.aip.org/aip/acp/issue/3131/1" target="_blank" rel="noopener">Previous <br>
-              Proceedings<br>(2024)</a></li>
-          <li><a href="{{ url_for('registration') }}"
-              class="{% if active_page == 'registration' %}active{% endif %}">Registration</a></li>
-          <li><a href="{{ url_for('venue') }}" class="{% if active_page == 'venue' %}active{% endif %}">Venue</a></li>
-          <li><a href="{{ url_for('contact') }}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
-          </li>
-          <li><a href="{{ url_for('submitpaper') }}" class="btn-submit" aria-label="Submit Paper">Submit Paper</a></li>
-        </ul>
-        <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  {% block content %}{% endblock %}
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>UTCA Conference 2026</h3>
-          <p>International Conference on Ubiquitous Technology in Communication & Artificial Intelligence</p>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('registration') }}">Registration</a></li>
-            <li><a href="{{ url_for('venue') }}">Venue</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact Info</h4>
-
-          <p class="footer-contact">
-            <i data-lucide="mail"></i>
-            <a href="mailto:utcaconference@cambridge.edu.in">
-              utcaconference@cambridge.edu.in
-            </a>
-          </p>
-
-          <p class="footer-contact">
-            <i data-lucide="phone"></i>
-            <a href="tel:+919971181579">
-              +91 99711 81579
-            </a>
-          </p>
-
-          <p class="footer-contact">
-            <i data-lucide="map-pin"></i>
-            Cambridge Institute of Technology, Bengaluru, Karnataka, India
-          </p>
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-        <p>
-          &copy; {{ year | default(2026) }} UTCA 2026. All rights reserved.
-          Organized by Cambridge Institute of Technology Bangalore.
-          <br>
-          Designed &amp; Developed by
-          <a href="https://www.linkedin.com/in/keerthi-vasan05" target="_blank" rel="noopener">
-            Keerthi Vasan P
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="{{ url_for('home') }}" class="brand">
+            <img
+              src="{{ url_for('static', filename='Images/utca-logo.svg') }}"
+              alt="UTCA Logo"
+              class="brand-logo"
+            />
+            <span class="brand-text">2026</span>
           </a>
-        </p>
+
+          <ul class="nav-menu" id="navMenu">
+            <li>
+              <a
+                href="{{ url_for('home') }}"
+                class="{% if active_page == 'home' %}active{% endif %}"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('about') }}"
+                class="{% if active_page == 'about' %}active{% endif %}"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('committee') }}"
+                class="{% if active_page == 'committee' %}active{% endif %}"
+                >Committee</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeE7t9lVq2T22zmH0TKNBJDwd1UjguhJ7xE-JI6OKnadmh9xw/viewform?usp=sharing&ouid=108850276283933379059"
+                target="_blank"
+                rel="noopener"
+                >Call For<br />Reviewer</a
+              >
+            </li>
+            <li class="dropdown">
+              <a
+                href="#"
+                class="dropdown-toggle {% if active_page in ['conference-track', 'submission-guidelines'] %}active{% endif %}"
+              >
+                Call For<br />
+                Papers
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    href="{{ url_for('conference_track') }}"
+                    class="{% if active_page == 'conference-track' %}active{% endif %}"
+                  >
+                    Conference Track
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="{{ url_for('submission_guidelines') }}"
+                    class="{% if active_page == 'submission-guidelines' %}active{% endif %}"
+                  >
+                    Submission Guidelines
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                href="https://pubs.aip.org/aip/acp/issue/3131/1"
+                target="_blank"
+                rel="noopener"
+                >Previous <br />
+                Proceedings<br />(2024)</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('registration') }}"
+                class="{% if active_page == 'registration' %}active{% endif %}"
+                >Registration</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('venue') }}"
+                class="{% if active_page == 'venue' %}active{% endif %}"
+                >Venue</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('contact') }}"
+                class="{% if active_page == 'contact' %}active{% endif %}"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('submitpaper') }}"
+                class="btn-submit"
+                aria-label="Submit Paper"
+                >Submit Paper</a
+              >
+            </li>
+          </ul>
+          <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
       </div>
+    </nav>
 
-    </div>
-  </footer>
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
 
-  <!-- JS -->
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
-  {% block extra_js %}{% endblock %}
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>UTCA Conference 2026</h3>
+            <p>
+              International Conference on Ubiquitous Technology in Communication
+              & Artificial Intelligence
+            </p>
+          </div>
 
-</body>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="{{ url_for('home') }}">Home</a></li>
+              <li><a href="{{ url_for('registration') }}">Registration</a></li>
+              <li><a href="{{ url_for('venue') }}">Venue</a></li>
+              <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+          </div>
 
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+
+            <p class="footer-contact">
+              <i data-lucide="mail"></i>
+              <a href="mailto:utcaconference@cambridge.edu.in">
+                utcaconference@cambridge.edu.in
+              </a>
+            </p>
+
+            <p class="footer-contact">
+              <i data-lucide="phone"></i>
+              <a href="tel:+919971181579"> +91 99711 81579 </a>
+            </p>
+
+            <p class="footer-contact">
+              <i data-lucide="map-pin"></i>
+              Cambridge Institute of Technology, Bengaluru, Karnataka, India
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; {{ year | default(2026) }} UTCA 2026. All rights reserved.
+            Organized by Cambridge Institute of Technology Bangalore.
+            <br />
+            Designed &amp; Developed by
+            <a
+              href="https://www.linkedin.com/in/keerthi-vasan05"
+              target="_blank"
+              rel="noopener"
+            >
+              Keerthi Vasan P
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    {% block extra_js %}{% endblock %}
+  </body>
 </html>
