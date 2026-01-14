@@ -1152,6 +1152,43 @@ tbody tr:hover {
     background: var(--bg-light);
 }
 
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.payment-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 30px;
+  background: #fff;
+}
+
+.payment-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+  color: #111;
+}
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-table td {
+  padding: 8px 6px;
+  vertical-align: top;
+  font-size: 0.95rem;
+}
+
+.payment-table td:first-child {
+  width: 40%;
+  color: #374151;
+}
+
+
 /* ========================================
    Venue Section
    ======================================== */
@@ -1483,25 +1520,41 @@ tbody tr:hover {
     margin-bottom: var(--space-xs);
 }
 
-/* Social Links - No Blue, No Underline */
+/* Social Links - Container */
 .dev-socials {
     display: flex;
-    gap: 15px;
+    gap: 15px; /* Spacing between icons */
     margin-top: var(--space-sm);
+    align-items: center; /* Ensures icons align vertically */
 }
 
+/* Base Link Styling */
 .dev-socials a {
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light); /* Default icon color */
+    transition: all 0.3s ease;
 }
 
-.dev-socials a:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
+/* Target the SVG inside the link */
+.dev-socials a svg {
+    width: 22px;  /* Standard professional size */
+    height: 22px;
+    fill: currentColor; /* Inherits the color from the <a> tag */
+    transition: transform 0.2s ease;
 }
+
+/* Hover Effects - No underline, just color and scale */
+.dev-socials a:hover {
+    color: black;
+    text-decoration: none; /* Explicitly remove underline */
+}
+
+.dev-socials a:hover svg {
+    transform: translateY(-3px); /* Subtle lift effect instead of underline */
+}
+
 
 /* Keep your existing contact-photo style but ensure it's small enough */
 .developer-card .contact-photo {
@@ -1511,6 +1564,7 @@ tbody tr:hover {
     object-fit:fill;
     border: 3px solid var(--primary-color);
 }
+
 
 /* Mobile responsive */
 @media (max-width: 500px) {
