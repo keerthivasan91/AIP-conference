@@ -203,6 +203,11 @@ def committee():
             "name": "Dr. Debabrata Das",
             "designation": "Chief Guest & Speaker, Director, IIIT Bangalore"
             },
+
+            {
+            "name": "Ms. Akansha Shukla",
+            "designation": "Cyber Security Expert, Abn AMRO NL"
+            },
             {
             "name": "Dr. Nasimuddin",
             "designation": "Speaker, Scientist, A*STAR I2R Singapore"
