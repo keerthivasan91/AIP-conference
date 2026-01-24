@@ -371,6 +371,10 @@ def committee():
             {
             "name": "Dr. Sanjai Singh",
             "designation": "Electronics and Communication Engineering, IIIT Allahabad, India"
+            },
+            {
+            "name": "Mr. D. Kannadassan",
+            "designation": "Prof and Head, DCE, VIT, Vellore"
             }
         ]
         },
