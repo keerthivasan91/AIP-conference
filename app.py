@@ -206,7 +206,7 @@ def committee():
 
             {
             "name": "Ms. Akansha Shukla",
-            "designation": "Cyber Security Expert, Abn AMRO NL"
+            "designation": "Cyber Security Expert, ABN AMRO, Amsterdam, Netherlands"
             },
             {
             "name": "Dr. Nasimuddin",
