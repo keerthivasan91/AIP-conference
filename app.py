@@ -373,7 +373,7 @@ def committee():
             "designation": "Electronics and Communication Engineering, IIIT Allahabad, India"
             },
             {
-            "name": "Mr. D. Kannadassan",
+            "name": "Dr. D. Kannadassan",
             "designation": "Prof and Head, DCE, VIT, Vellore"
             }
         ]
