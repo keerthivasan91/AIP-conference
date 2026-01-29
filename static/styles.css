@@ -1976,6 +1976,10 @@ tbody tr:hover {
     .events-grid {
         grid-template-columns: 1fr;
     }
+    .hero-content {
+        transform: none !important;
+        opacity: 1 !important;
+    }
 }
 
 /* Large Mobile Phones */
