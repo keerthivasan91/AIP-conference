@@ -1,132 +1,148 @@
-// ===============================
-// Wait for DOM to be fully ready
-// ===============================
-document.addEventListener('DOMContentLoaded', function () {
+// =======================================
+// DOM Ready (Critical JS only)
+// =======================================
+document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initScrollEffects();
-    initSmoothScrolling();
     initAnimations();
     updateFooterYear();
 
-    console.log("✅ AIP Conference 2026 CIT - Website Loaded Successfully!");
+    console.log("✅ AIP Conference 2026 CIT - Website Ready");
 });
-lucide.createIcons();
-// ===============================
+
+// =======================================
+// Defer heavy work until full load
+// =======================================
+window.addEventListener('load', () => {
+    if (window.lucide) {
+        lucide.createIcons();
+    }
+});
+
+// =======================================
 // Mobile Navigation + Dropdown
-// ===============================
+// =======================================
 function initNavigation() {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
 
     if (!navToggle || !navMenu) return;
 
-    /* Toggle sidebar */
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('open');
         navMenu.classList.toggle('open');
     });
-
-    /* Handle link clicks */
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', (e) => {
-
-            /* 🔑 Dropdown toggle → DO NOT close sidebar */
-            if (link.classList.contains('dropdown-toggle')) {
-                e.preventDefault();
-                e.stopPropagation();
-                link.parentElement.classList.toggle('open');
-                return;
-            }
-
-            /* Normal link → close sidebar */
-            navToggle.classList.remove('open');
-            navMenu.classList.remove('open');
-        });
-    });
 }
 
-// ===============================
-// Navbar Scroll Effect + Active Links
-// ===============================
+// =======================================
+// Scroll Effects (rAF throttled)
+// =======================================
 function initScrollEffects() {
-    const navbar = document.querySelector(".navbar");
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-menu a");
-    const heroContent = document.querySelector(".hero-content");
+    const navbar = document.querySelector('.navbar');
+    const sections = [...document.querySelectorAll('section')];
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const heroContent = document.querySelector('.hero-content');
 
     if (!navbar) return;
 
-    function handleScroll() {
+    let ticking = false;
+
+    function onScroll() {
         const scrollY = window.scrollY;
 
-        /* Navbar shadow */
-        navbar.classList.toggle("scrolled", scrollY > 50);
+        // Navbar shadow
+        navbar.classList.toggle('scrolled', scrollY > 50);
 
-        /* Active section highlight */
-        let currentSection = '';
-        sections.forEach(section => {
+        // Active section highlight
+        let current = '';
+        for (const section of sections) {
             const top = section.offsetTop - 120;
-            const height = section.clientHeight;
-            if (scrollY >= top && scrollY < top + height) {
-                currentSection = section.getAttribute('id');
+            const bottom = top + section.offsetHeight;
+            if (scrollY >= top && scrollY < bottom) {
+                current = section.id;
+                break;
             }
-        });
+        }
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
+            link.classList.toggle(
+                'active',
+                link.getAttribute('href') === `#${current}`
+            );
         });
 
-        /* Hero parallax */
-        if (heroContent && scrollY < window.innerHeight) {
+        // Hero parallax (desktop only)
+        if (
+            heroContent &&
+            window.innerWidth > 768 &&
+            scrollY < window.innerHeight
+        ) {
             heroContent.style.transform = `translateY(${scrollY * 0.4}px)`;
             heroContent.style.opacity = Math.max(0.3, 1 - scrollY / 500);
         }
+
+        ticking = false;
     }
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-}
-
-// ===============================
-// Smooth Scrolling for Anchor Links
-// ===============================
-function initSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", e => {
-            const href = anchor.getAttribute("href");
-
-            if (href === "#" || href === "#!") {
-                e.preventDefault();
-                return;
-            }
-
-            const target = document.querySelector(href);
-            if (!target) return;
-
-            e.preventDefault();
-            window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: "smooth"
-            });
-        });
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(onScroll);
+            ticking = true;
+        }
     });
+
+    onScroll();
 }
 
-// ===============================
+// =======================================
+// Global Click Handler (Event Delegation)
+// =======================================
+document.addEventListener('click', e => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+
+    // Dropdown toggle
+    if (link.classList.contains('dropdown-toggle')) {
+        e.preventDefault();
+        link.parentElement.classList.toggle('open');
+        return;
+    }
+
+    // Close mobile menu on normal links
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (navToggle && navMenu) {
+        navToggle.classList.remove('open');
+        navMenu.classList.remove('open');
+    }
+
+    // Smooth scroll
+    if (href && href.startsWith('#') && href.length > 1) {
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        e.preventDefault();
+        window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// =======================================
 // Intersection Observer Animations
-// ===============================
+// =======================================
 function initAnimations() {
     const elements = document.querySelectorAll(
-        ".info-card, .track-card, .timeline-item, .committee-card"
+        '.info-card, .track-card, .timeline-item, .committee-card'
     );
 
     if (!('IntersectionObserver' in window)) {
         elements.forEach(el => {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
+            el.style.opacity = '1';
+            el.style.transform = 'none';
         });
         return;
     }
@@ -134,45 +150,34 @@ function initAnimations() {
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'none';
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
     elements.forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(30px)";
-        el.style.transition = "all 0.6s ease";
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
         observer.observe(el);
     });
 }
 
-// ===============================
+// =======================================
 // Dynamic Footer Year
-// ===============================
+// =======================================
 function updateFooterYear() {
-    const footerYear = document.querySelector(".footer-bottom span");
-    if (footerYear) {
-        footerYear.textContent = new Date().getFullYear();
+    const yearEl = document.querySelector('.footer-bottom span');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
     }
 }
 
-// ===============================
-// Page Load Fade-In
-// ===============================
-window.addEventListener("load", () => {
-    document.body.style.opacity = "0";
-    document.body.style.transition = "opacity 0.4s ease";
-    setTimeout(() => {
-        document.body.style.opacity = "1";
-    }, 80);
-});
-
-// ===============================
-// Global Error Logger
-// ===============================
+// =======================================
+// Global Error Logger (non-blocking)
+// =======================================
 window.addEventListener('error', e => {
-    console.error("JS Error:", e.error);
+    console.error('JS Error:', e.error);
 });
