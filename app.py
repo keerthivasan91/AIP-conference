@@ -174,7 +174,7 @@ def committee():
             "members": [
                 {
                     "name": "Dr. Ajay Kumar Dwivedi",
-                    "designation": "Department R&D Head, Associate Professor, ECE, CIT, Bengaluru"
+                    "designation": "Associate Professor, Research Head, ECE, CIT, Bengaluru"
                 },
                 {
                     "name": "Dr. Vivek Singh",
